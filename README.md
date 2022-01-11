@@ -1,24 +1,10 @@
-# README
+# Sweepstake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to run the application
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+1. $ git clone https://github.com/DylanRJ/sweepstake.git
+2. $ bundle install
+3. $ rails s
+4. Visit http://localhost:3000/ and http://localhost:3000/competitions
+```
