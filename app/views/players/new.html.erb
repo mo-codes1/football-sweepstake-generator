@@ -1,7 +1,9 @@
 
-<%= form_with model: @players do |form| %>
-    <%= form.label :Player1 %>
-    <%= form.text_field :Player %>
-    <%= form.submit %>
-  <% end %>
+<%= form_for @game do |form| %> 
+  <%= form.fields_for :players do |player_builder| %>
+    <%= player_builder.label :Player1 %>
+    <%= player.text_field :name %>
+  <%= end %>
+  <%= form.submit %>
+<% end %>
   
