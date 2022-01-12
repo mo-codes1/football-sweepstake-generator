@@ -1,1 +1,9 @@
-<h1>Hello, Rails!</h1>
+<h1>Competitions</h1>
+
+<ul>
+  <% @competitions.each do |competition| %>
+    <li>
+      <%= competition.name %>
+    </li>
+  <% end %>
+</ul>
