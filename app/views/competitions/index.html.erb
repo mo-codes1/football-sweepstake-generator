@@ -3,7 +3,10 @@
 <ul>
   <% @competitions.each do |competition| %>
     <li>
-      <%= competition.name %>
+      <a href="/competitions/<%= competition.id %>">
+        <%= competition.name %>
+      </a>
     </li>
   <% end %>
 </ul>
+
