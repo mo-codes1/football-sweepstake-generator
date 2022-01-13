@@ -1,5 +1,5 @@
-<h2>Add a players:</h2>
-<%= form_with model: @player do |form| %>
+<h2>Add a player:</h2>
+<%= form_with model: [ @game, @game.players.build ] do |form| %>
   <p>
     <%= form.label :Player1 %><br>
     <%= form.text_field :name %>
