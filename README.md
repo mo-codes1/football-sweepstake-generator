@@ -25,7 +25,7 @@ $ bin/rails console
 Action 1: copy, paste and run the following
 
 ```
-> team_arr = ["Algeria",            
+team_arr = ["Algeria",            
  "Burkina Faso",       
  "Cabo Verde",         
  "Cameroon",           
@@ -54,9 +54,9 @@ Action 1: copy, paste and run the following
 Action 2: Then copy, paste and run the following
 
 ```
- > team_arr.each do |team| 
-    Team.new(name: "#{team}", competition_id: 1).save 
-  end
+team_arr.each do |team| 
+  Team.new(name: "#{team}", competition_id: 1).save 
+end
 ```
 
 Check your 'teams' table in TablePlus, verify you can see the Africa Cup of Nations teams
