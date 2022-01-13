@@ -3,11 +3,8 @@ Rails.application.routes.draw do
 
 
   resources :competitions do
-    resources :games
+    resources :games do
+      resources :players
+    end
   end
-
-  get "players/new", to: "players#new"
-  
-  
-
 end

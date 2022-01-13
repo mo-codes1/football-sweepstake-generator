@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @game = Game.find(1) #(replace '1' with :game_id)
+    @game = Game.find(params[:game_id])#(replace '1' with :game_id)
     @player = @game.players.create(player_params)
   end
 

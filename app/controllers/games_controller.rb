@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   def create
     @competition = Competition.find(params[:competition_id])
     @game = @competition.games.create(game_params)
-    redirect_to competition_game_url(@competition.id, @game.id)
+    redirect_to new_competition_game_player_path(@competition.id, @game.id)
   end
 
   def show
