@@ -1,5 +1,14 @@
 <h1><%= @competition.name %></h1>
 <br>
+<ul>
+  <% @teams.each do |team| %>
+   <li>
+     <%= team.name %>
+   </li>
+  <% end %>
+ </ul>
+<br>
+
 <h2>New sweepstake name:</h2>
 <%= form_with model: [ @competition, @competition.games.build ] do |form| %>
   
