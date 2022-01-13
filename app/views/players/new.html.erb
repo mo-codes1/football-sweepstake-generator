@@ -1,14 +1,12 @@
-<h2>Add a player:</h2>
+<h1>Game name: <%= @game.name %></h1>
+<br>
+<h2>New player name:</h2>
 <%= form_with model: @players do |form| %>
+  
   <p>
-    <%= form.label :Player1 %>:<br>
     <%= form.text_field :name %>
   </p>
   <p>
     <%= form.submit %>
   </p>
 <% end %>
-
-
-
-  
