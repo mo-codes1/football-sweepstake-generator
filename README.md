@@ -10,7 +10,7 @@ $ rails db:migrate
 $ bin/rails console
 > competition = Competition.new(name: "Africa Cup of Nations")
 > competition.save
-> competition2 = Competition.new(name: "Australian Open")
+> competition2 = Competition.new(name: "Premier League")
 > competition2.save
 $ exit
 $ rails s
