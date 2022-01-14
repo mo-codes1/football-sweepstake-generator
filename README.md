@@ -56,7 +56,7 @@ Action 2: Then copy, paste and run the following
 
 ```
 team_arr.each do |team| 
- Team.new(name: "#{team}", competition_id: 1).save 
+ Team.create(name: "#{team}", competition_id: 1) 
 end
 ```
 
@@ -99,7 +99,7 @@ Action 2: Then copy, paste and run the following
 
 ```
 teams_arr.each do |team| 
- Team.new(name: "#{team}", competition_id: 2).save 
+ Team.create(name: "#{team}", competition_id: 2) 
 end
 ```
 
