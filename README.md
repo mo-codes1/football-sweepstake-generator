@@ -71,7 +71,7 @@ $ bin/rails console
 Action 1: copy, paste and run the following
 
 ```
-teams_arr = [
+teams_arr2 = [
  "Arsenal",       
  "Aston Villa",    
  "Brentford",     
@@ -98,7 +98,7 @@ teams_arr = [
 Action 2: Then copy, paste and run the following
 
 ```
-teams_arr.each do |team| 
+teams_arr2.each do |team| 
  Team.create(name: "#{team}", competition_id: 2) 
 end
 ```
