@@ -13,7 +13,11 @@ class PlayersController < ApplicationController
   def create
     @competition = Competition.find(params[:competition_id])
     @game = Game.find(params[:game_id]) #(replace '1' with :game_id)
-    @player = @game.players.create(name: params[:name]) # this was an issue
+    i = 1
+    24.times do
+    @player = @game.players.create(name: params["player#{i}"]) # this was an issue
+    i += 1
+    end
     redirect_to competition_game_players_path
   end
 
