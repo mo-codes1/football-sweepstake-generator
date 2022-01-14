@@ -11,13 +11,15 @@ RSpec.describe "Add player names", type: :feature do
   end
   scenario "a user can add 2 names for the african cup of nations" do
     competition = Competition.create(name: "African cup of Nation")
-    # competition.games.create(name: "AFCON")
-    fill_in "[name]", with: "AFCON"
-    visit "/competitions/1/games/1/players/new"
-    fill_in "player 1", with: "john"
-    fill_in "player 2", with: "josh"
-    click_button 'create game'
-    expect(page).to have_content("john", "josh")
+    game = competition.games.create(name: "AFCON")
+    p competition
+    p game
+    visit "/competitions/2/games/2/players/new"
+    fill_in "name", with: "john"
+    fill_in "name", with: "josh"
+    click_button 'Generate sweepstake'
+    expect(page).to have_content("john")
+    expect(page).to have_content("josh")
   end
 end
 
