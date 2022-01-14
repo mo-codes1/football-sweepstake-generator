@@ -1,3 +1,14 @@
 <h1><%= @competition.name %></h1>
 
 <h1><%= @game.name %></h1>
+
+<h2>New player name:</h2>
+<%= form_with model: [ @competition, @game, @game.players.build ] do |form| %>
+  
+  <p>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

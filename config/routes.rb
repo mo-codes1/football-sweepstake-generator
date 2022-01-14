@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/teams", to: "teams#index"
   
   resources :competitions do
-    resources :games
+    resources :games, :teams do
+      resources :players
+    end
   end
 end
