@@ -1,12 +1,19 @@
 <h1>Game name: <%= @game.name %></h1>
 <br>
 <h2>New player name:</h2>
-<%= form_with model: @players do |form| %>
-  
+
+
+<div>
+<%= form_with model: @players do |form, i| %>
+  <% i = 1 %>
+  <% 24.times do %>
   <p>
-    <%= form.text_field :name %>
+    <%= form.text_field "player#{i}" %>
   </p>
+  <% i += 1 %>
+  <% end %>
   <p>
     <%= form.submit "Generate sweepstake" %>
   </p>
 <% end %>
+</div>
