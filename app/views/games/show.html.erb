@@ -4,11 +4,12 @@
 
 <h2>New player name:</h2>
 <%= form_with model: [ @competition, @game, @game.players.build ] do |form| %>
-  
+  <% (0...@teams).each do %>
+    <p>
+      <%= form.text_field :name %>
+    </p>
+  <% end %>
   <p>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.submit %>
+    <%= form.submit "Randomise Names" %>
   </p>
 <% end %>

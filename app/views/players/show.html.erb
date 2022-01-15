@@ -2,4 +2,10 @@
 
 <h1><%= @game.name %></h1>
 
-<h1><%= @player.name %></h1>
+<ul>
+  <% @players.each do |player| %>
+    <li>
+      <%= player.name %>
+    </li>
+  <% end %>
+</ul>
