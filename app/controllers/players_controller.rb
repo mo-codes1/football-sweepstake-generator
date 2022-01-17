@@ -4,9 +4,11 @@ class PlayersController < ApplicationController
     @competition = Competition.find(params[:competition_id])
     @game = Game.find(params[:game_id])
     @teams = Team.all.select { |team| team.competition_id == params[:competition_id].to_i }.count
+    @randomteams = Team.all.select { |team| team.competition_id == params[:competition_id].to_i }.shuffle
     i = 1
     (0...@teams).each do
-      @game.players.create(name: params["player"]["name#{i}"])
+      @randomteam = @randomteams[i - 1][:id]
+      @game.players.create(name: params["player"]["name#{i}"], team_id: @randomteam)
       i += 1
     end
     redirect_to competition_game_player_url(@competition.id, @game.id, :id)
