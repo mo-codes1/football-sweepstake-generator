@@ -22,7 +22,8 @@ class PlayersController < ApplicationController
         @player = @game.players.create(name: params["player"]["player#{i + 1}"], team_id: @competition_teams_array[i])
         i += 1
       end
-    redirect_to competition_game_player_url(@competition.id, @game.id, @player.id)
+    p "this is the last player #{@player}"
+    redirect_to competition_game_player_url(@competition.id, @game.id, :id)
   end
 
   def show
