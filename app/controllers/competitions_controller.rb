@@ -9,11 +9,9 @@ class CompetitionsController < ApplicationController
     @games = Game.all.select { |game| game.competition_id == @competition.id }
   end
 
-  def delete
-    @game = Game.find(params[:id])
-    @game.delete
-
-    redirect_to root_path
+  def destroy
+    p params[:game_id]
+    Game.find_by(id: params[:id]).destroy
   end
 
 end

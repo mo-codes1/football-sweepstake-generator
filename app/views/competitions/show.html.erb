@@ -17,7 +17,7 @@
      <a href="<%= @competition.id %>/games/<%= game.id %>/players/id">
        <%= game.name %>
      </a>
-     <%= link_to "Delete", competition_game_url(game.id), data: { turbo_method: :delete } %>
+     <%= link_to "Delete", competition_url(@competition.id), method: :destroy, id: game.id %>
    </li>
   <% end %>
  </ul>
