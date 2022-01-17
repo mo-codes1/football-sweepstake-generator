@@ -5,6 +5,7 @@ RSpec.feature "view player names and teams", type: :feature do
   scenario "user adds players and sees ordered team allocation" do
     competition = Competition.create(name: "Africa Cup of Nations")
     team = Team.create(name: "Algeria", competition_id: competition.id)
+    team2 = Team.create(name: "Burkina Faso", competition_id: competition.id)
     visit "/competitions"
     click_link "Africa Cup of Nations"
     fill_in "game[name]", with: "Test sweepstake name"
