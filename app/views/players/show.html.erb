@@ -6,6 +6,9 @@
   <% @players.each do |player| %>
     <li>
       <%= player.name %>
+      <%= team = Team.find(player.team_id).name %>
     </li>
   <% end %>
 </ul>
+<%= @teams.inspect %>
+
