@@ -5,7 +5,7 @@
 <ul>
   <% @players.each do |player| %>
     <li>
-      <%= player.name %>
+      <%= player.name %> was drawn 
       <%= team = Team.find(player.team_id).name %>
     </li>
   <% end %>
