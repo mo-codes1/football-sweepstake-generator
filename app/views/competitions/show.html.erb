@@ -9,6 +9,18 @@
  </ul>
 <br>
 
+<h2>Sweepstakes</h2>
+
+<ul>
+  <% @games.each do |game| %>
+   <li>
+     <a href="<%= @competition.id %>/games/<%= game.id %>/players/id">
+       <%= game.name %>
+     </a>
+   </li>
+  <% end %>
+ </ul>
+
 <h2>New sweepstake name:</h2>
 <%= form_with model: [ @competition, @competition.games.build ] do |form| %>
   
