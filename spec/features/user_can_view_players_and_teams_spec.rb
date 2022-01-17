@@ -18,6 +18,4 @@ RSpec.feature "view player names and teams", type: :feature do
     expect(page).to have_content("Dave")
     expect(page).to have_content("Burkina Faso")
   end
-
-
 end

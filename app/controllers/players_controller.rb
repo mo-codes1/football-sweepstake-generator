@@ -15,7 +15,7 @@ class PlayersController < ApplicationController
     @competition = Competition.find(params[:competition_id])
     @game = Game.find(params[:game_id])
     i = 0
-    @competition_teams_array = Team.all.select { |team| team.competition_id == @competition.id }.map { |team| team.id }
+    @competition_teams_array = Team.all.select { |team| team.competition_id == @competition.id }.map { |team| team.id }.shuffle
     p "This is what we're trying to see #{@competition_teams_array}"
     @teams_count = Team.all.select { |team| team.competition_id == params[:competition_id].to_i }.count
       @teams_count.times do # Replace hardcoded 24 with the number of teams for the competition (@competition.number_of_teams) - Maybe add a new column in competitions table to make this possible
