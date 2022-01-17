@@ -7,7 +7,7 @@ RSpec.describe Player, type: :model do
     competition = Competition.create(name: "Africa Cup of Nations")
     game = Game.create(name: "Dean's game", competition_id: competition.id)
     team = Team.create(name: "Algeria", competition_id: competition.id)
-    player = Player.create(name: "John", game_id: game.id, team_id: 1)
+    player = Player.create(name: "John", game_id: game.id, team_id: team.id)
     expect(player).to be_valid
   end
 end
