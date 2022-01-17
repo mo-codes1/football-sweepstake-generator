@@ -18,11 +18,10 @@ class PlayersController < ApplicationController
     @competition_teams_array = Team.all.select { |team| team.competition_id == @competition.id }.map { |team| team.id }.shuffle
     p "This is what we're trying to see #{@competition_teams_array}"
     @teams_count = Team.all.select { |team| team.competition_id == params[:competition_id].to_i }.count
-      @teams_count.times do # Replace hardcoded 24 with the number of teams for the competition (@competition.number_of_teams) - Maybe add a new column in competitions table to make this possible
+      @teams_count.times do
         @player = @game.players.create(name: params["player"]["player#{i + 1}"], team_id: @competition_teams_array[i])
         i += 1
       end
-    p "this is the last player #{@player}"
     redirect_to competition_game_player_url(@competition.id, @game.id, :id)
   end
 
