@@ -5,7 +5,7 @@
 <h2>New player name:</h2>
   <%= form_with model: [ @competition, @game, @game.players.build ] do |form, i| %>
     <% i = 1 %>
-    <% 24.times do %>
+    <% @teams_count.times do %>
     <p>
       <%= form.text_field "player#{i}" %>
     </p>
