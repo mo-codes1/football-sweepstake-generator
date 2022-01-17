@@ -4,9 +4,11 @@
 
 <h2>New player name:</h2>
 <%= form_with model: [ @competition, @game, @game.players.build ] do |form| %>
+  <% i = 1 %>
   <% (0...@teams).each do %>
     <p>
-      <%= form.text_field :name %>
+      <%= form.text_field "name#{i}" %>
+      <% i += 1 %>
     </p>
   <% end %>
   <p>
