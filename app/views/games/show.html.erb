@@ -1,5 +1,4 @@
 <h1><%= @competition.name %></h1>
-<%= button_to "Return to Competition", competition_path(@competition.id), method: :get %>
 
 <h1><%= @game.name %></h1>
 
@@ -13,11 +12,6 @@
     <% i += 1 %>
     <% end %>
     <p>
-      <%= i %>: <%= form.text_field "name#{i}" %>
-      <% i += 1 %>
+      <%= form.submit "Generate sweepstake" %>
     </p>
   <% end %>
-  <p>
-    <%= form.submit "Randomise Names" %>
-  </p>
-<% end %>

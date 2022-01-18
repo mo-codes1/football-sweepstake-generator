@@ -1,5 +1,4 @@
 class CompetitionsController < ApplicationController
-
   def index
     @competitions = Competition.all
   end
@@ -7,11 +6,5 @@ class CompetitionsController < ApplicationController
   def show
     @competition = Competition.find(params[:id])
     @teams = Team.all.select { |team| team.competition_id == @competition.id }
-    @games = Game.all.select { |game| game.competition_id == @competition.id }
   end
-
-  def destroy
-    Game.find(params[:game_id]).delete
-  end
-
 end
