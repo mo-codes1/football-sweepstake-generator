@@ -30,6 +30,7 @@ class PlayersController < ApplicationController
     @game = Game.find(params[:game_id])
     @players = Player.all.select { |player| player.game_id == @game.id }
     @teams = Team.all.select { |team| team.competition_id == @competition.id }
+
   end
 
   private

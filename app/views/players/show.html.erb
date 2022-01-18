@@ -1,7 +1,21 @@
 <h1><%= @competition.name %></h1>
+<%= button_to "Return to Competition", competition_path(@competition.id), method: :get %>
 
 <h1><%= @game.name %></h1>
 
+<h1>Unselected Teams:</h1>
+<ul>
+  <% @teams.each do |team| %>
+    <% if @players.none? { |player| player.team_id == team.id } %>
+      <li>
+        <%= team.name %>
+      </li>
+    <% else %>
+    <% end %>
+  <% end %>
+</ul>
+
+<h1>Selected Teams:</h1>
 <ul>
   <% @players.each do |player| %>
     <li>
@@ -10,4 +24,3 @@
     </li>
   <% end %>
 </ul>
-
