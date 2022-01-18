@@ -3,3 +3,12 @@
 
 <%= @team_name %>
 <%= @team_form %>
+
+<ul>
+  <% @players.each do |player| %>
+    <li>
+      <%= player.name %> was drawn 
+      <%= team = Team.find(player.team_id).name %>
+    </li>
+  <% end %>
+</ul>

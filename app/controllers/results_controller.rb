@@ -1,6 +1,8 @@
 require 'net/http'
 class ResultsController < ApplicationController
   def index
+    @game = Game.find(params[:game_id])
+    @players = Player.all.select { |player| player.game_id == @game.id }
     standings = request_standings_api
     @team_name = standings["response"][0]["league"]["standings"][0][0]["team"]["name"]
     # the final numbered index accces e.g. [0] above gives you access to each team's hash within the standings array
