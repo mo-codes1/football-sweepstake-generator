@@ -18,6 +18,7 @@
        <%= game.name %>
      </a>
    </li>
+   <%= button_to "Delete Sweepstake", competition_path(@competition.id, game_id: game.id), method: :delete %>
   <% end %>
  </ul>
 
