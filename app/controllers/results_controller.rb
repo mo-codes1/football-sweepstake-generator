@@ -2,9 +2,15 @@ require 'net/http'
 class ResultsController < ApplicationController
   def index
     standings = request_standings_api
-    @team_name = standings["response"][0]["league"]["standings"][0][0]["team"]["name"] 
+    @team_name = standings["response"][0]["league"]["standings"][0][0]["team"]["name"]
+    # the final numbered index accces e.g. [0] above gives you access to each team's hash within the standings array
+    # that has looks like this" { rank : 1, team : { id: 1, name: Cameroon} , .... , form: WDD}
     # p "This is response: #{parameters}" 
-    @team_form = standings["response"][0]["league"]["standings"][0][0]["form"] 
+    # @team_form = standings["response"][0]["league"]["standings"][0][0]["form"]
+    
+    # just testing here:
+    group_A_standings_array = standings["response"][0]["league"]["standings"][0]
+    @team_form = group_A_standings_array.find { |team_hash| team_hash["team"]["name"] == "Cameroon" }["form"]
     standings.inspect
   end
 
