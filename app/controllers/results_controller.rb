@@ -1,9 +1,10 @@
 require 'net/http'
 class ResultsController < ApplicationController
   def index
-    standings = request_standings_api  
-    p "This is standings: #{standings}"
-    
+    standings = request_standings_api
+    @team_name = standings["response"][0]["league"]["standings"][0][0]["team"]["name"] 
+    # p "This is response: #{parameters}" 
+    @team_form = standings["response"][0]["league"]["standings"][0][0]["form"] 
     standings.inspect
   end
 

@@ -2,6 +2,11 @@
 
 <h1><%= @game.name %></h1>
 
+
+<a href="/competitions/<%= @competition.id %>/games/<%= @game.id %>/results">
+  <h1> Live scores </h1>
+</a>
+
 <ul>
   <% @players.each do |player| %>
     <li>
