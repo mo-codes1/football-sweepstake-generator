@@ -3,8 +3,8 @@ class PlayersController < ApplicationController
   def create
     @competition = Competition.find(params[:competition_id])
     @game = Game.find(params[:game_id])
-    @teams = Team.all.select { |team| team.competition_id == params[:competition_id].to_i }.count
     @players = Player.all.select { |player| player.game_id == @game.id }
+    @teams = Team.all.select { |team| (team.competition_id == params[:competition_id].to_i) && (@players.none? { |player| player.team_id == team.id }) }.count
     @randomteams = Team.all.select { |team| (team.competition_id == params[:competition_id].to_i) && (@players.none? { |player| player.team_id == team.id }) }.shuffle
     i = 1
     (0...@teams).each do
