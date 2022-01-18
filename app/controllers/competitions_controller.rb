@@ -9,9 +9,4 @@ class CompetitionsController < ApplicationController
     @games = Game.all.select { |game| game.competition_id == @competition.id }
   end
 
-  def destroy
-    p params[:game_id]
-    Game.find_by(id: params[:id]).destroy
-  end
-
 end
