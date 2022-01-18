@@ -14,18 +14,22 @@ class PlayersController < ApplicationController
   def create
     @competition = Competition.find(params[:competition_id])
     @game = Game.find(params[:game_id])
+    @players = Player.all.select { |player| player.game_id == @game.id }
+    @teams = Team.all.select { |team| (team.competition_id == params[:competition_id].to_i) && (@players.none? { |player| player.team_id == team.id }) }.count
+    @randomteams = Team.all.select { |team| (team.competition_id == params[:competition_id].to_i) && (@players.none? { |player| player.team_id == team.id }) }.shuffle
     i = 1
-      24.times do # Replace hardcoded 24 with the number of teams for the competition (@competition.number_of_teams) - Maybe add a new column in competitions table to make this possible
-        @player = @game.players.create(name: params["player"]["player#{i}"])
-        i += 1
-      end
-    redirect_to competition_game_player_url(@competition.id, @game.id, @player.id)
+    (0...@teams).each do
+      @game.players.create(name: params["player"]["name#{i}"], team_id: @randomteams[i - 1][:id])
+      i += 1
+    end
+    redirect_to competition_game_player_url(@competition.id, @game.id, :id)
   end
 
   def show
     @competition = Competition.find(params[:competition_id])
     @game = Game.find(params[:game_id])
     @players = Player.all.select { |player| player.game_id == @game.id }
+    @teams = Team.all.select { |team| team.competition_id == params[:competition_id].to_i }
   end
 
   private

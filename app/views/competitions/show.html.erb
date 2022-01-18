@@ -9,6 +9,19 @@
  </ul>
 <br>
 
+<h2>Sweepstakes</h2>
+
+<ul>
+  <% @games.each do |game| %>
+   <li>
+     <a href="<%= @competition.id %>/games/<%= game.id %>/players/id">
+       <%= game.name %>
+     </a>
+   </li>
+   <%= button_to "Delete Sweepstake", competition_path(@competition.id, game_id: game.id), method: :delete %>
+  <% end %>
+ </ul>
+
 <h2>New sweepstake name:</h2>
 <%= form_with model: [ @competition, @competition.games.build ] do |form| %>
   
@@ -16,6 +29,6 @@
     <%= form.text_field :name %>
   </p>
   <p>
-    <%= form.submit %>
+    <%= form.submit "Create Sweepstake" %>
   </p>
 <% end %>
