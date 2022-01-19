@@ -6,9 +6,9 @@ RSpec.describe "Add player names", type: :feature do
     competition = Competition.create(name: "Africa Cup of Nations")
     team = Team.create(name: "Algeria", competition_id: competition.id)
     visit "/competitions"
-    click_link "Africa Cup of Nations"
+    click_link "Create Sweepstake"
     fill_in "game[name]", with: "Test sweepstake name"
-    click_button "Create Game"
+    click_button "Set up your sweepstake"
     fill_in 'player_player1', with: 'John'
     click_button 'Generate sweepstake'
     expect(page).to have_content('John')
@@ -19,9 +19,9 @@ RSpec.describe "Add player names", type: :feature do
     team = Team.create(name: "Arsenal", competition_id: competition.id)
     team2 = Team.create(name: "Aston Villa", competition_id: competition.id)
     visit "/competitions"
-    click_link "Premier League"
+    click_link "Create Sweepstake"
     fill_in "game[name]", with: "Test sweepstake name"
-    click_button "Create Game"
+    click_button "Set up your sweepstake"
     fill_in 'player_player1', with: 'John'
     fill_in 'player_player2', with: 'Dave'  
     click_button 'Generate sweepstake'
