@@ -31,27 +31,18 @@ class ResultsController < ApplicationController
     elsif @competition.id == 2
       url = URI("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=39")
     end
+
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     request = Net::HTTP::Get.new(url) 
     request["x-rapidapi-host"] = 'api-football-v1.p.rapidapi.com'
-    request["x-rapidapi-key"] = '3b09e8b915mshaca1e487c4eda14p11ff9ejsn21ca0d881c0e'
+    request["x-rapidapi-key"] = ENV.fetch('RAPID_API_KEY')
 
     response = http.request(request)
-    # return nil if response.status != 200
-
+    # return nil if response.status != 200 # need to change this to Net:HTTP syntax
     JSON.parse(response.body)
   end
 end
 
-# url = URI("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=6")
-# http = Net::HTTP.new(url.host, url.port)
-# http.use_ssl = true
-# http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-# request = Net::HTTP::Get.new(url)
-# request["x-rapidapi-host"] = 'api-football-v1.p.rapidapi.com'
-# request["x-rapidapi-key"] = '3b09e8b915mshaca1e487c4eda14p11ff9ejsn21ca0d881c0e'
-# response = http.request(request)
-# puts response.read_body
