@@ -1,17 +1,31 @@
-<h1><%= @competition.name %></h1>
+<br>
+<h1 class="text-center"><%= @competition.name %></h1>
+<br>
 
-<h1><%= @game.name %></h1>
+<h2 class="text-center"><%= @game.name %></h2>
+<br>
 
-<h2>New player name:</h2>
+<h3 class="text-center">Add player names:</h3>
+<br>
+
+<div class="d-flex justify-content-center">
   <%= form_with model: [ @competition, @game, @game.players.build ] do |form, i| %>
-    <% i = 1 %>
-    <% @teams_count.times do %>
-    <p>
-      <%= form.text_field "player#{i}" %>
-    </p>
-    <% i += 1 %>
-    <% end %>
-    <p>
-      <%= form.submit "Generate sweepstake" %>
-    </p>
+    <div class="card" style="width: 28rem;">
+      <div class="card-body">
+        <div class="mb-3 text-center">
+          <% i = 1 %>
+          <% @teams_count.times do %>
+            <%= form.label "Player #{i}:", { class: "form-label", style: "font-size: 25px;" } %>
+            <%= form.text_field "player#{i}", { class: "form-control", style: "margin-bottom: 1em;" }  %>
+          <% i += 1 %>
+          <% end %>
+        </div>
+        <div class="text-center">
+          <%= form.submit "Generate sweepstake", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
   <% end %>
+</div>
+<br>
+
