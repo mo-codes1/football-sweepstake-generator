@@ -3,8 +3,8 @@ class ResultsController < ApplicationController
   def index
     @game = Game.find(params[:game_id])
     @players = Player.all.select { |player| player.game_id == @game.id }
-    standings = request_standings_api
-    @team_name = standings["response"][0]["league"]["standings"][0][0]["team"]["name"]
+    p standings = request_standings_api
+    @team_name = "Cameroon"
     # the final numbered index accces e.g. [0] above gives you access to each team's hash within the standings array
     # that has looks like this" { rank : 1, team : { id: 1, name: Cameroon} , .... , form: WDD}
     # p "This is response: #{parameters}" 
@@ -12,7 +12,8 @@ class ResultsController < ApplicationController
     
     # just testing here:
     group_A_standings_array = standings["response"][0]["league"]["standings"][0]
-    @team_form = group_A_standings_array.find { |team_hash| team_hash["team"]["name"] == "Cameroon" }["form"]
+    @team_form = group_A_standings_array.find { |team_hash| 
+      team_hash["team"]["name"] == @team_name }["form"]
     standings.inspect
   end
 
