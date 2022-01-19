@@ -4,6 +4,7 @@ require 'openssl'
 
 class ResultsController < ApplicationController
   def index
+    @competition = Competition.find(params[:competition_id])
     @game = Game.find(params[:game_id])
     @players = Player.all.select { |player| player.game_id == @game.id } 
     update_team_form
@@ -12,31 +13,8 @@ class ResultsController < ApplicationController
   private
 
   def update_team_form
-    team_array = ["Algeria",       
-      "Burkina Faso",    
-      "Cape Verde Islands",     
-      "Cameroon",      
-      "Comoros",       
-      "Ivory Coast",     
-      "Egypt",        
-      "Equatorial Guinea",  
-      "Ethiopia",      
-      "Gabon",        
-      "Gambia",       
-      "Ghana",        
-      "Guinea",       
-      "Guinea-Bissau",    
-      "Malawi",
-      "Mali",
-      "Mauritania",
-      "Morocco",
-      "Nigeria",
-      "Senegal",
-      "Sierra Leone",
-      "Sudan",
-      "Tunisia",
-      "Zimbabwe"]
-
+    # p team_array = Team.all.select { |team| team.competition_id == @competition.id }
+    p team_array = Team.all.select { |team| team.competition_id == @competition.id }.map { |team| team.name}
     standings = request_standings_api
     @standings_array = standings["response"][0]["league"]["standings"]
     @standings_array.flatten!
