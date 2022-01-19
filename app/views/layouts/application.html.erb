@@ -14,7 +14,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body style="background-image: url( <%= asset_path('pitch.jpg') %> ); background-position: top; background-size: cover;">
+    <nav class="navbar navbar-light" style="background-color: black;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/" style="color: white;">Football Sweepstake Generator</a>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

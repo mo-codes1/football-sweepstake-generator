@@ -6,7 +6,7 @@ RSpec.feature "Choose a competition", type: :feature do
     competition = Competition.new(name: "Africa Cup of Nations")
     competition.save
     visit "/"
-    click_link "Africa Cup of Nations"
+    click_link "Create Sweepstake"
 
     expect(page).to have_content("Africa Cup of Nations")
   end
