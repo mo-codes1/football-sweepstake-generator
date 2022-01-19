@@ -26,8 +26,11 @@ class ResultsController < ApplicationController
   end
 
   def request_standings_api     
-    url = URI("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=6")
-
+    if @competition.id == 1 
+      url = URI("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=6")
+    elsif @competition.id == 2
+      url = URI("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=39")
+    end
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
