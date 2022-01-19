@@ -11,6 +11,11 @@
   <% @competitions.each do |competition| %>
     <div class="col">
       <div class="card text-center">
+      <% if competition.name == "Africa Cup of Nations" %>
+      <img src="<%= asset_path('AFCON-logo.jpeg') %>" class="card-img-top">
+      <% else %>
+      <img src="<%= asset_path('premier-league-logo.jpeg') %>" class="card-img-top">
+      <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= competition.name %></h5>
           <p class="card-text">You can create a sweepstake for the <%= competition.name %> here.</p>
