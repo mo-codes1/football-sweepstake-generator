@@ -1,12 +1,12 @@
 <br>
-<h1 class="text-center"><%= @competition.name %></h1>
+<h1 class="text-center" style="color: white;"><%= @competition.name %></h1>
 <br>
 <br>
 
 <div class="container">
   <div class="row row-cols-4">
     <% @teams.each do |team| %>
-      <div class="col text-center"><%= team.name %></div>
+      <div class="col text-center" style="color: white;"><%= team.name %></div>
     <% end %>
   </div>
 </div>
