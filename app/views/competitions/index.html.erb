@@ -1,19 +1,21 @@
 <br>
+<div>
 <h1 class="text-center">Competitions</h1>
+</div>
 <br>
-  <div class="row align-items-start">
+
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <% @competitions.each do |competition| %>
     <div class="col">
-      <% @competitions.each do |competition| %>
-          <figure class="mx-auto text-center">
-            <div class="card rounded mx-auto d-block" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><%= competition.name %></h5>
-                  <p class="card-text">You can create a sweepstake for this competition here.</p>
-                <a href="/competitions/<%= competition.id %>" class="btn btn-primary">Create Sweepstake</a>
-              </div>
-            </div>
-          </figure>
-      <% end %>
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title"><%= competition.name %></h5>
+          <p class="card-text">You can create a sweepstake for the <%= competition.name %> here.</p>
+          <a href="/competitions/<%= competition.id %>" class="btn btn-primary">Create Sweepstake</a>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
+</div>
+<br>
