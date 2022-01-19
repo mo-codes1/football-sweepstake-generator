@@ -1,8 +1,14 @@
-<h1>Live scores</h1>
-<p>Find me in app/views/results/index.html.erb</p>
+<h1>Your teams current form</h1>
 
-<%= @team_name %>
-<%= @team_form %>
+
+<%
+=begin%>
+ <%= @team_name %>
+<%= @team_form %>  
+<%
+=end%>
+
+
 
 <ul>
   <% @players.each do |player| %>
@@ -13,18 +19,3 @@
     </li>
   <% end %>
 </ul>
-
-
-<%
-=begin%>
- <ul>
-  <% @players.each do |player| %>
-    <li>
-      <%= player.name %> was drawn 
-      <%= team = Team.find(player.team_id).name %>
-      <%= team_form = @standings_array.find { |team_hash| team_hash["team"]["name"] == team }["form"] %>
-    </li>
-  <% end %>
-</ul> 
-<%
-=end%>
