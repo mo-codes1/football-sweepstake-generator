@@ -1,32 +1,61 @@
 require 'net/http'
+require 'uri'
+require 'openssl'
+
 class ResultsController < ApplicationController
   def index
     @game = Game.find(params[:game_id])
-    @players = Player.all.select { |player| player.game_id == @game.id }
-    p standings = request_standings_api
-    @team_name = "Cameroon"
-    # the final numbered index accces e.g. [0] above gives you access to each team's hash within the standings array
-    # that has looks like this" { rank : 1, team : { id: 1, name: Cameroon} , .... , form: WDD}
-    # p "This is response: #{parameters}" 
-    # @team_form = standings["response"][0]["league"]["standings"][0][0]["form"]
-    
-    # just testing here:
-    group_A_standings_array = standings["response"][0]["league"]["standings"][0]
-    @team_form = group_A_standings_array.find { |team_hash| 
-      team_hash["team"]["name"] == @team_name }["form"]
-    standings.inspect
+    @players = Player.all.select { |player| player.game_id == @game.id } 
+    update_team_form
   end
 
   private
+
+  def update_team_form
+    team_array = ["Algeria",       
+      "Burkina Faso",    
+      "Cape Verde Islands",     
+      "Cameroon",      
+      "Comoros",       
+      "Ivory Coast",     
+      "Egypt",        
+      "Equatorial Guinea",  
+      "Ethiopia",      
+      "Gabon",        
+      "Gambia",       
+      "Ghana",        
+      "Guinea",       
+      "Guinea-Bissau",    
+      "Malawi",
+      "Mali",
+      "Mauritania",
+      "Morocco",
+      "Nigeria",
+      "Senegal",
+      "Sierra Leone",
+      "Sudan",
+      "Tunisia",
+      "Zimbabwe"]
+
+    standings = request_standings_api
+    @standings_array = standings["response"][0]["league"]["standings"]
+    @standings_array.flatten!
+    team_array.each do |team|
+      @team_form = @standings_array.find { |team_hash| team_hash["team"]["name"] == team }["form"] 
+      team = Team.find_by(name: team)
+      team.update(form: @team_form)
+    end
+  end
+
   def request_standings_api     
-    url = URI("https://api-football-beta.p.rapidapi.com/standings?season=2021&league=6")
+    url = URI("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=6")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     request = Net::HTTP::Get.new(url) 
-    request["x-rapidapi-host"] = 'api-football-beta.p.rapidapi.com'
+    request["x-rapidapi-host"] = 'api-football-v1.p.rapidapi.com'
     request["x-rapidapi-key"] = '3b09e8b915mshaca1e487c4eda14p11ff9ejsn21ca0d881c0e'
 
     response = http.request(request)
@@ -35,3 +64,13 @@ class ResultsController < ApplicationController
     JSON.parse(response.body)
   end
 end
+
+# url = URI("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=6")
+# http = Net::HTTP.new(url.host, url.port)
+# http.use_ssl = true
+# http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+# request = Net::HTTP::Get.new(url)
+# request["x-rapidapi-host"] = 'api-football-v1.p.rapidapi.com'
+# request["x-rapidapi-key"] = '3b09e8b915mshaca1e487c4eda14p11ff9ejsn21ca0d881c0e'
+# response = http.request(request)
+# puts response.read_body

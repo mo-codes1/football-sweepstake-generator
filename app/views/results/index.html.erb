@@ -12,3 +12,18 @@
     </li>
   <% end %>
 </ul>
+
+
+<%
+=begin%>
+ <ul>
+  <% @players.each do |player| %>
+    <li>
+      <%= player.name %> was drawn 
+      <%= team = Team.find(player.team_id).name %>
+      <%= team_form = @standings_array.find { |team_hash| team_hash["team"]["name"] == team }["form"] %>
+    </li>
+  <% end %>
+</ul> 
+<%
+=end%>
