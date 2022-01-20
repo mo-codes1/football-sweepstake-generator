@@ -13,11 +13,10 @@ class ResultsController < ApplicationController
   private
 
   def update_team_form
-    # p team_array = Team.all.select { |team| team.competition_id == @competition.id }
     team_array = Team.all.select { |team| team.competition_id == @competition.id }.map { |team| team.name}
     standings = request_standings_api
     @standings_array = standings["response"][0]["league"]["standings"]
-    p @standings_array.flatten!
+    @standings_array.flatten!
     team_array.each do |team|
       @team_form = @standings_array.find { |team_hash| team_hash["team"]["name"] == team }["form"] 
       team = Team.find_by(name: team)
