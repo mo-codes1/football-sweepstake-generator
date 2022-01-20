@@ -1,0 +1,23 @@
+section{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+}
+marquee{
+  height: 20vh
+}
+
+.ball{
+  max-width: 100px;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate{
+  0%{
+      transform: rotate(0deg);
+  }
+  100%{
+      transform: rotate(360deg);
+  }
+}
