@@ -9,6 +9,7 @@ gem "uri"
 
 gem 'dotenv-rails'
 
+gem 'net-http'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
