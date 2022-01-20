@@ -19,11 +19,11 @@
     <div class="col">
       <div class="card h-100 text-center">
         <div class="card-body">
-          <h5 class="card-title"><%= team = Team.find(player.team_id).name %></h5>
+          <h5 class="card-title"><%= player.name %></h5>
           <p class="card-text">
-            Current form: <b><%= form = Team.find(player.team_id).form %></b>
+            Was drawn: <br><b><%= team = Team.find(player.team_id).name %></b>
             <br>
-            Drawn by: <b><%= player.name %></b>
+             Current form: <br><b><%= form = Team.find(player.team_id).form %></b>
           </p>
         </div>
       </div>
