@@ -26,9 +26,10 @@ $ bin/rails console
 Action 1: copy, paste and run the following
 
 ```
-team_arr = ["Algeria",       
+team_arr = [
+ "Algeria",       
  "Burkina Faso",    
- "Cabo Verde",     
+ "Cape Verde Islands",     
  "Cameroon",      
  "Comoros",       
  "Ivory Coast",     
@@ -49,7 +50,8 @@ team_arr = ["Algeria",
  "Sierra Leone",
  "Sudan",
  "Tunisia",
- "Zimbabwe"]
+ "Zimbabwe"
+ ]
 ```
 
 Action 2: Then copy, paste and run the following
@@ -75,23 +77,23 @@ teams_arr2 = [
  "Arsenal",       
  "Aston Villa",    
  "Brentford",     
- "Brighton & Hove Albion",      
+ "Brighton",      
  "Burnley",       
  "Chelsea",
  "Crystal Palace",     
  "Everton",        
- "Leeds United",  
- "Leicester City",      
+ "Leeds",  
+ "Leicester",      
  "Liverpool",        
  "Manchester City",       
  "Manchester United",        
- "Newcastle United",       
- "Norwich City",    
+ "Newcastle",       
+ "Norwich",    
  "Southampton",
- "Tottenham Hotspur",
+ "Tottenham",
  "Watford",
- "West Ham United",
- "Wolverhampton Wanderers",
+ "West Ham",
+ "Wolves",
  ]
 ```
 
