@@ -1,18 +1,35 @@
-<h1><%= @competition.name %></h1>
+<br>
+<div>
+<h1 class="text-center" style="color: white;"><%= @competition.name %></h1>
+</div>
+<br>
 
-<h1><%= @game.name %></h1>
+<div>
+<h2 class="text-center" style="color: white;"><%= @game.name %></h2>
+</div>
+<br>
 
-<h2>Your teams current form</h2>
+<div>
+<h3 class="text-center" style="color: white;"> Live standings for your sweepstake:</h3>
+</div>
+<br>
 
-
-<%
-=begin%>
- <%= @team_name %>
-<%= @team_form %>  
-<%
-=end%>
-
-
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @players.each do |player| %>
+    <div class="col">
+      <div class="card h-100 text-center">
+        <div class="card-body">
+          <h5 class="card-title"><%= team = Team.find(player.team_id).name %></h5>
+          <p class="card-text">
+            Current form: <b><%= form = Team.find(player.team_id).form %></b>
+            <br>
+            Drawn by: <b><%= player.name %></b>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <ul>
   <% @players.each do |player| %>

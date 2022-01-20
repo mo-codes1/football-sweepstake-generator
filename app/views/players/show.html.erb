@@ -5,14 +5,9 @@
 <br>
 
 <div>
-<h2 class="text-center" style="color: white;"><%= @game.name %></h2>
+<h2 class="text-center" style="color: white;">Sweepstake name:<%= @game.name %></h2>
 </div>
 <br>
-
-
-<a href="/competitions/<%= @competition.id %>/games/<%= @game.id %>/results">
-  <h1> Live scores </h1>
-</a>
 
 <ul>
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -28,3 +23,11 @@
   <% end %>
 </div>
 <br>
+<div class="d-flex justify-content-center">
+  <div class="text-center">
+    <a href="/competitions/<%= @competition.id %>/games/<%= @game.id %>/results" class="btn btn-primary">View real-time results for your sweepstake</a>
+  </div>
+</div>  
+</ul>
+<br>
+
