@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   resources :competitions do
     resources :games, :teams do
-      resources :players
+      resources :players, :results
     end
   end
   
